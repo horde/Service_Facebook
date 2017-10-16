@@ -10,7 +10,7 @@
   <email>mrubinsk@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-09-19</date>
+ <date>2017-10-17</date>
  <version>
   <release>2.0.11</release>
   <api>2.0.0</api>
@@ -32,7 +32,6 @@
        <dir name="examples">
         <file name="facebook_example.php" role="doc" />
        </dir> <!-- /doc/Horde/Service/Facebook/examples -->
-       <file name="COPYING" role="doc" />
        <file name="UPGRADING" role="doc" />
       </dir> <!-- /doc/Horde/Service/Facebook -->
      </dir> <!-- /doc/Horde/Service -->
@@ -325,6 +324,7 @@
     </dir> <!-- /locale/zh_TW -->
     <file name="Horde_Service_Facebook.pot" role="data" />
    </dir> <!-- /locale -->
+   <file name="LICENSE" role="doc" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -382,9 +382,8 @@
  </dependencies>
  <phprelease>
   <filelist>
-   <install as="COPYING" name="doc/Horde/Service/Facebook/COPYING" />
-   <install as="UPGRADING" name="doc/Horde/Service/Facebook/UPGRADING" />
    <install as="examples/facebook_example.php" name="doc/Horde/Service/Facebook/examples/facebook_example.php" />
+   <install as="UPGRADING" name="doc/Horde/Service/Facebook/UPGRADING" />
    <install as="Horde/Service/Facebook.php" name="lib/Horde/Service/Facebook.php" />
    <install as="Horde/Service/Facebook/Auth.php" name="lib/Horde/Service/Facebook/Auth.php" />
    <install as="Horde/Service/Facebook/Base.php" name="lib/Horde/Service/Facebook/Base.php" />
@@ -398,14 +397,14 @@
    <install as="Horde/Service/Facebook/Notes.php" name="lib/Horde/Service/Facebook/Notes.php" />
    <install as="Horde/Service/Facebook/Notifications.php" name="lib/Horde/Service/Facebook/Notifications.php" />
    <install as="Horde/Service/Facebook/Photos.php" name="lib/Horde/Service/Facebook/Photos.php" />
+   <install as="Horde/Service/Facebook/Request/Base.php" name="lib/Horde/Service/Facebook/Request/Base.php" />
+   <install as="Horde/Service/Facebook/Request/Graph.php" name="lib/Horde/Service/Facebook/Request/Graph.php" />
+   <install as="Horde/Service/Facebook/Request/Rest.php" name="lib/Horde/Service/Facebook/Request/Rest.php" />
    <install as="Horde/Service/Facebook/Streams.php" name="lib/Horde/Service/Facebook/Streams.php" />
    <install as="Horde/Service/Facebook/Translation.php" name="lib/Horde/Service/Facebook/Translation.php" />
    <install as="Horde/Service/Facebook/Users.php" name="lib/Horde/Service/Facebook/Users.php" />
    <install as="Horde/Service/Facebook/Videos.php" name="lib/Horde/Service/Facebook/Videos.php" />
-   <install as="Horde/Service/Facebook/Request/Base.php" name="lib/Horde/Service/Facebook/Request/Base.php" />
-   <install as="Horde/Service/Facebook/Request/Graph.php" name="lib/Horde/Service/Facebook/Request/Graph.php" />
-   <install as="Horde/Service/Facebook/Request/Rest.php" name="lib/Horde/Service/Facebook/Request/Rest.php" />
-   <install as="locale/Horde_Service_Facebook.pot" name="locale/Horde_Service_Facebook.pot" />
+   <install as="LICENSE" name="LICENSE" />
    <install as="locale/ar/LC_MESSAGES/Horde_Service_Facebook.mo" name="locale/ar/LC_MESSAGES/Horde_Service_Facebook.mo" />
    <install as="locale/ar/LC_MESSAGES/Horde_Service_Facebook.po" name="locale/ar/LC_MESSAGES/Horde_Service_Facebook.po" />
    <install as="locale/bg/LC_MESSAGES/Horde_Service_Facebook.mo" name="locale/bg/LC_MESSAGES/Horde_Service_Facebook.mo" />
@@ -438,6 +437,7 @@
    <install as="locale/gl/LC_MESSAGES/Horde_Service_Facebook.po" name="locale/gl/LC_MESSAGES/Horde_Service_Facebook.po" />
    <install as="locale/he/LC_MESSAGES/Horde_Service_Facebook.mo" name="locale/he/LC_MESSAGES/Horde_Service_Facebook.mo" />
    <install as="locale/he/LC_MESSAGES/Horde_Service_Facebook.po" name="locale/he/LC_MESSAGES/Horde_Service_Facebook.po" />
+   <install as="locale/Horde_Service_Facebook.pot" name="locale/Horde_Service_Facebook.pot" />
    <install as="locale/hr/LC_MESSAGES/Horde_Service_Facebook.mo" name="locale/hr/LC_MESSAGES/Horde_Service_Facebook.mo" />
    <install as="locale/hr/LC_MESSAGES/Horde_Service_Facebook.po" name="locale/hr/LC_MESSAGES/Horde_Service_Facebook.po" />
    <install as="locale/hu/LC_MESSAGES/Horde_Service_Facebook.mo" name="locale/hu/LC_MESSAGES/Horde_Service_Facebook.mo" />
@@ -856,7 +856,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-09-19</date>
+   <date>2017-10-17</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
 * 
