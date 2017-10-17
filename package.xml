@@ -32,7 +32,7 @@
        <dir name="examples">
         <file name="facebook_example.php" role="doc" />
        </dir> <!-- /doc/Horde/Service/Facebook/examples -->
-       <file name="UPGRADING" role="doc" />
+       <file name="UPGRADING.rst" role="doc" />
       </dir> <!-- /doc/Horde/Service/Facebook -->
      </dir> <!-- /doc/Horde/Service -->
     </dir> <!-- /doc/Horde -->
@@ -383,7 +383,7 @@
  <phprelease>
   <filelist>
    <install as="examples/facebook_example.php" name="doc/Horde/Service/Facebook/examples/facebook_example.php" />
-   <install as="UPGRADING" name="doc/Horde/Service/Facebook/UPGRADING" />
+   <install as="UPGRADING.rst" name="doc/Horde/Service/Facebook/UPGRADING.rst" />
    <install as="Horde/Service/Facebook.php" name="lib/Horde/Service/Facebook.php" />
    <install as="Horde/Service/Facebook/Auth.php" name="lib/Horde/Service/Facebook/Auth.php" />
    <install as="Horde/Service/Facebook/Base.php" name="lib/Horde/Service/Facebook/Base.php" />
