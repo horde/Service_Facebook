@@ -10,7 +10,7 @@
   <email>mrubinsk@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-17</date>
+ <date>2017-10-27</date>
  <version>
   <release>2.0.11</release>
   <api>2.0.0</api>
@@ -31,6 +31,7 @@
        <dir name="examples">
         <file name="facebook_example.php" role="doc" />
        </dir> <!-- /doc/Horde/Service/Facebook/examples -->
+       <file name="CHANGES" role="doc" />
        <file name="UPGRADING.rst" role="doc" />
       </dir> <!-- /doc/Horde/Service/Facebook -->
      </dir> <!-- /doc/Horde/Service -->
@@ -381,6 +382,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Service/Facebook/CHANGES" />
    <install as="examples/facebook_example.php" name="doc/Horde/Service/Facebook/examples/facebook_example.php" />
    <install as="UPGRADING.rst" name="doc/Horde/Service/Facebook/UPGRADING.rst" />
    <install as="Horde/Service/Facebook.php" name="lib/Horde/Service/Facebook.php" />
@@ -855,7 +857,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-27</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
    </notes>
