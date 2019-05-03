@@ -2,7 +2,7 @@
 id: Service_Facebook
 name: Service_Facebook
 full: Facebook client library
-description: Client libraries for the Facebook REST API.
+description: A client library for the Facebook REST API.
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Service_Facebook
