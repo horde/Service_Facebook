@@ -1,4 +1,14 @@
 ---
+3.0.0-RC1:
+  api: 3.0.0-RC1
+  state:
+    release: RC
+    api: RC
+  date: 2026-07-11
+  license:
+    identifier: BSD-2-Clause
+    uri: https://spdx.org/licenses/BSD-2-Clause.html
+  notes: "doc: Document the 3.0 (Facebook Graph 25) API.\nfeat: PSR-4 API client for API version 25\nstyle: php-cs-fixer\nchore: Update workflow dependency\nAdd CI job for satis repo update\nDevelopment mode for Service_Facebook-3.0.0alpha3"
 3.0.0alpha2:
   api: 2.0.0
   state:
@@ -8,8 +18,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |+
-    
+  notes: ''
 3.0.0alpha1:
   api: 2.0.0
   state:
@@ -19,8 +28,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [rla] Package for H6 / composer installer.
+  notes: "[rla] Package for H6 / composer installer.\n"
 2.0.11:
   api: 2.0.0
   state:
@@ -30,7 +38,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: ~
+  notes: null
 2.0.10:
   api: 2.0.0
   state:
@@ -40,8 +48,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Mark PHP 7 as supported.
+  notes: "[jan] Mark PHP 7 as supported.\n"
 2.0.9:
   api: 2.0.0
   state:
@@ -51,8 +58,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update Greek translation (Limperis Antonis <limperis@cti.gr>).
+  notes: "[jan] Update Greek translation (Limperis Antonis <limperis@cti.gr>).\n"
 2.0.8:
   api: 2.0.0
   state:
@@ -62,8 +68,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Fix issues with certain locales like Turkish.
+  notes: "[jan] Fix issues with certain locales like Turkish.\n"
 2.0.7:
   api: 2.0.0
   state:
@@ -73,9 +78,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Support loading translations from Composer-installed package.
-    [jan] Add Composer definition.
+  notes: "[jan] Support loading translations from Composer-installed package.\n[jan] Add Composer definition.\n"
 2.0.6:
   api: 2.0.0
   state:
@@ -85,8 +88,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [mjr] Correctly catch HTTP client exceptions.
+  notes: "[mjr] Correctly catch HTTP client exceptions.\n"
 2.0.5:
   api: 2.0.0
   state:
@@ -96,8 +98,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Try to parse error message from json-formated error response.
+  notes: "[jan] Try to parse error message from json-formated error response.\n"
 2.0.4:
   api: 2.0.0
   state:
@@ -107,8 +108,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Fix examples location.
+  notes: "[jan] Fix examples location.\n"
 2.0.3:
   api: 2.0.0
   state:
@@ -118,8 +118,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update French translation (Paul De Vlieger <paul.de_vlieger@moniut.univ-bpclermont.fr>).
+  notes: "[jan] Update French translation (Paul De Vlieger <paul.de_vlieger@moniut.univ-bpclermont.fr>).\n"
 2.0.2:
   api: 2.0.0
   state:
@@ -129,8 +128,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update Basque translation (Ibon Igartua <ibon.igartua@ehu.es>).
+  notes: "[jan] Update Basque translation (Ibon Igartua <ibon.igartua@ehu.es>).\n"
 2.0.1:
   api: 2.0.0
   state:
@@ -140,8 +138,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update Dutch translation (Arjen de Korte <build+horde@de-korte.org>).
+  notes: "[jan] Update Dutch translation (Arjen de Korte <build+horde@de-korte.org>).\n"
 2.0.0:
   api: 2.0.0
   state:
@@ -151,8 +148,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First stable release for Horde 5.
+  notes: "First stable release for Horde 5.\n"
 2.0.0RC1:
   api: 2.0.0
   state:
@@ -162,8 +158,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Fix parsing JSON responses with PHP 5.4.
+  notes: "[jan] Fix parsing JSON responses with PHP 5.4.\n"
 2.0.0beta2:
   api: 2.0.0
   state:
@@ -173,8 +168,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [mjr] Remove fields from FQL statement that are no longer available.
+  notes: "[mjr] Remove fields from FQL statement that are no longer available.\n"
 2.0.0beta1:
   api: 2.0.0
   state:
@@ -184,9 +178,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First beta release for Horde 5.
-    [mjr] Update API to use the Graph API wherever possible.
+  notes: "First beta release for Horde 5.\n[mjr] Update API to use the Graph API wherever possible.\n"
 2.0.0alpha1:
   api: 1.0.0
   state:
@@ -196,9 +188,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First alpha release for Horde 5.
-    [mjr] Removed the deprecated OFFLINE permission.
+  notes: "First alpha release for Horde 5.\n[mjr] Removed the deprecated OFFLINE permission.\n"
 1.1.3:
   api: 1.0.0
   state:
@@ -208,8 +198,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update translations.
+  notes: "[jan] Update translations.\n"
 1.1.2:
   api: 1.0.0
   state:
@@ -219,8 +208,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).
+  notes: "[jan] Update Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).\n"
 1.1.1:
   api: 1.0.0
   state:
@@ -230,8 +218,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [mjr] Use FQL to obtain event list and add rsvp_status
+  notes: "[mjr] Use FQL to obtain event list and add rsvp_status\n"
 1.1.0:
   api: 1.0.0
   state:
@@ -241,9 +228,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update Latvian translation.
-    [mjr] Add dependency on Horde_Support to better support logging features.
+  notes: "[jan] Update Latvian translation.\n[mjr] Add dependency on Horde_Support to better support logging features.\n"
 1.0.2:
   api: 1.0.0
   state:
@@ -253,10 +238,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Update Lithuanian translation.
-    [jan] Update Brazilian Portuguese translation.
-    [mjr] Fix integer overflow issue (Bug #9889).
+  notes: "[jan] Update Lithuanian translation.\n[jan] Update Brazilian Portuguese translation.\n[mjr] Fix integer overflow issue (Bug #9889).\n"
 1.0.1:
   api: 1.0.0
   state:
@@ -266,9 +248,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Updated Slovak translation.
-    [jan] Updated Spanish translation.
+  notes: "[jan] Updated Slovak translation.\n[jan] Updated Spanish translation.\n"
 1.0.0:
   api: 1.0.0
   state:
@@ -278,8 +258,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First stable release for Horde 4.
+  notes: "First stable release for Horde 4.\n"
 1.0.0RC2:
   api: 1.0.0
   state:
@@ -289,8 +268,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    Second release candidate for Horde 4.
+  notes: "Second release candidate for Horde 4.\n"
 1.0.0RC1:
   api: 1.0.0
   state:
@@ -300,9 +278,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First release candidate for Horde 4.
-    [mjr] Refactored for OAuth2 Authentication
+  notes: "First release candidate for Horde 4.\n[mjr] Refactored for OAuth2 Authentication\n"
 1.0.0beta1:
   api: 1.0.0
   state:
@@ -312,8 +288,7 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First beta release for Horde 4.
+  notes: "First beta release for Horde 4.\n"
 1.0.0alpha1:
   api: 1.0.0
   state:
@@ -323,5 +298,4 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First alpha release for Horde 4.
+  notes: "First alpha release for Horde 4.\n"

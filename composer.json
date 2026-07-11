@@ -6,6 +6,11 @@
     "license": "BSD-2-Clause",
     "authors": [
         {
+            "name": "Ralf Lang",
+            "email": "ralf.lang@ralf-lang.de",
+            "role": "lead"
+        },
+        {
             "name": "Michael J Rubinsky",
             "email": "mrubinsk@horde.org",
             "role": "lead"
@@ -27,15 +32,10 @@
         "psr/http-message": "^2.0",
         "horde/oauth": "^4 || dev-FRAMEWORK_6_0",
         "horde/jwt": "^1 || dev-FRAMEWORK_6_0",
-        "horde/exception": "^3 || dev-FRAMEWORK_6_0",
-        "ext-json": "*"
+        "horde/exception": "^3 || dev-FRAMEWORK_6_0"
     },
-    "require-dev": {
-        "horde/http": "^3.1.0 || dev-FRAMEWORK_6_0"
-    },
-    "suggest": {
-        "horde/http": "Batteries-included PSR-18/17/7 client for Horde applications"
-    },
+    "require-dev": {},
+    "suggest": {},
     "autoload": {
         "psr-0": {
             "Horde_Service_Facebook": "lib/"
@@ -54,7 +54,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-FRAMEWORK_6_0": "4.x-dev"
+            "dev-FRAMEWORK_6_0": "3.x-dev"
         }
     }
 }
