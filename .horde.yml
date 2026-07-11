@@ -1,14 +1,17 @@
 ---
 id: Service_Facebook
 name: Service_Facebook
-full: Facebook client library
-description: A client library for the Facebook REST API.
+full: Facebook Graph API client library
+description: >
+  A modern PSR-4 client for Facebook's Graph API. Targets Graph v25 by
+  default with active support for a rolling window of prior versions.
+  Integrates with horde/oauth for OAuth2/OIDC flows and horde/jwt for
+  id_token verification.
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Service_Facebook
 authors:
-  -
-    name: Michael J Rubinsky
+  - name: Michael J Rubinsky
     user: mrubinsk
     email: mrubinsk@horde.org
     active: true
@@ -18,19 +21,60 @@ version:
   api: 2.0.0
 state:
   release: alpha
-  api: stable
+  api: unstable
 license:
   identifier: BSD-2-Clause
   uri: http://www.horde.org/licenses/bsd
 dependencies:
   required:
-    php: ^7
+    php: ^8.1
     composer:
+      psr/http-client: ^1.0
+      psr/http-factory: ^1.0
+      psr/http-message: ^2.0
+      horde/oauth: ^4
+      horde/jwt: ^1
       horde/exception: ^3
-      horde/http: ^3
-      horde/translation: ^3
-      horde/support: ^3
-      horde/util: ^3
-    ext:
-      json: '*'
-      SimpleXML: '*'
+keywords:
+  - facebook
+  - graph
+  - oauth2
+  - oidc
+  - meta
+vendor: horde
+quality:
+  phpstan:
+    level: 6
+ci-platform:
+  '8.1':
+    - php: ^8.1
+    - ext-json
+    - ext-hash
+    - ext-openssl
+  '8.2':
+    - php: ^8.1
+    - ext-json
+    - ext-hash
+    - ext-openssl
+  '8.3':
+    - php: ^8.1
+    - ext-json
+    - ext-hash
+    - ext-openssl
+  '8.4':
+    - php: ^8.1
+    - ext-json
+    - ext-hash
+    - ext-openssl
+  '8.5':
+    - php: ^8.1
+    - ext-json
+    - ext-hash
+    - ext-openssl
+  '8.6':
+    - php: ^8.1
+    - ext-json
+    - ext-hash
+    - ext-openssl
+ci-platform-flags:
+  needs_installer_plugin: false
