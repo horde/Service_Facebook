@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Horde_Service_Facebook class abstracts communication with Facebook's
  * rest interface.
@@ -8,7 +9,7 @@
  * of the original code or design is left. I left the original copyright notice
  * intact below.
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -18,7 +19,7 @@
 /**
  * Facebook Platform PHP5 client
  *
- * Copyright 2004-2009 Facebook. All Rights Reserved.
+ * Copyright 2004-2026 Facebook. All Rights Reserved.
  *
  * Copyright (c) 2007 Facebook, Inc.
  * All rights reserved.
@@ -81,12 +82,12 @@ class Horde_Service_Facebook
      *
      * @var hash of Horde_Service_Facebook_* objects
      */
-     protected $_objCache = array();
+    protected $_objCache = [];
 
 
-    const API_VALIDATION_ERROR = 1;
-    const REST_SERVER_ADDR = 'https://api.facebook.com/method/';
-    const GRAPH_SERVER_ADDR = 'https://graph.facebook.com';
+    public const API_VALIDATION_ERROR = 1;
+    public const REST_SERVER_ADDR = 'https://api.facebook.com/method/';
+    public const GRAPH_SERVER_ADDR = 'https://graph.facebook.com';
 
     /**
      * Const'r
@@ -138,14 +139,14 @@ class Horde_Service_Facebook
     {
         // First, see if it's an allowed protected value.
         switch ($value) {
-        case 'appId':
-            return $this->_appId;
-        case 'secret':
-            return $this->_secret;
-        case 'http':
-            return $this->_http;
-        case 'logger':
-            return $this->_logger;
+            case 'appId':
+                return $this->_appId;
+            case 'secret':
+                return $this->_secret;
+            case 'http':
+                return $this->_http;
+            case 'logger':
+                return $this->_logger;
         }
 
         // If not, assume it's a method/action class...
@@ -181,7 +182,7 @@ class Horde_Service_Facebook
      *
      * @return mixed  Result of method call
      */
-    public function callMethod($method, array $params = array())
+    public function callMethod($method, array $params = [])
     {
         $this->_logger->debug(sprintf('Calling method %s with parameters %s', $method, print_r($params, true)));
         $request = new Horde_Service_Facebook_Request_Rest($this, $method, $params);
@@ -199,13 +200,16 @@ class Horde_Service_Facebook
      * @return mixed  The results of the API call.
      */
     public function callGraphApi(
-        $method = '', array $params = array(), array $options = array())
-    {
+        $method = '',
+        array $params = [],
+        array $options = []
+    ) {
         $request = new Horde_Service_Facebook_Request_Graph(
             $this,
             $method,
             $params,
-            $options);
+            $options
+        );
 
         return $request->run();
     }

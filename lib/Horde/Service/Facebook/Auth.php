@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Horde_Service_Facebook_Auth:: wrap functionality associated with
  * authenticating to Facebook.
@@ -6,7 +7,7 @@
  * For now, only provide methods for authenticating that make sense from
  * within a Horde context.
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -22,23 +23,23 @@ class Horde_Service_Facebook_Auth extends Horde_Service_Facebook_Base
     protected $_sessionKey;
 
     /** User Data Perms **/
-    const EXTEND_PERMS_USER_ABOUT = 'user_about_me';
-    const EXTEND_PERMS_USER_BIRTHDAY = 'user_birthday';
-    const EXTEND_PERMS_USER_EVENTS = 'user_events';
-    const EXTEND_PERMS_USER_HOMETOWN = 'user_hometown';
-    const EXTEND_PERMS_USER_LOCATION = 'user_location';
-    const EXTEND_PERMS_USER_PHOTOS = 'user_photos';
+    public const EXTEND_PERMS_USER_ABOUT = 'user_about_me';
+    public const EXTEND_PERMS_USER_BIRTHDAY = 'user_birthday';
+    public const EXTEND_PERMS_USER_EVENTS = 'user_events';
+    public const EXTEND_PERMS_USER_HOMETOWN = 'user_hometown';
+    public const EXTEND_PERMS_USER_LOCATION = 'user_location';
+    public const EXTEND_PERMS_USER_PHOTOS = 'user_photos';
 
     /** Friends Data **/
-    const EXTEND_PERMS_FRIENDS_ABOUT = 'friends_about_me';
-    const EXTEND_PERMS_FRIENDS_BIRTHDAY = 'friends_birthday';
-    const EXTEND_PERMS_FRIENDS_HOMETOWN = 'friends_hometown';
-    const EXTEND_PERMS_FRIENDS_LOCATION = 'friends_location';
-    const EXTEND_PERMS_FRIENDS_PHOTOS = 'friends_photos';
+    public const EXTEND_PERMS_FRIENDS_ABOUT = 'friends_about_me';
+    public const EXTEND_PERMS_FRIENDS_BIRTHDAY = 'friends_birthday';
+    public const EXTEND_PERMS_FRIENDS_HOMETOWN = 'friends_hometown';
+    public const EXTEND_PERMS_FRIENDS_LOCATION = 'friends_location';
+    public const EXTEND_PERMS_FRIENDS_PHOTOS = 'friends_photos';
 
     /** Misc **/
-    const EXTEND_PERMS_PUBLISHSTREAM = 'publish_stream';
-    const EXTEND_PERMS_READSTREAM = 'read_stream';
+    public const EXTEND_PERMS_PUBLISHSTREAM = 'publish_stream';
+    public const EXTEND_PERMS_READSTREAM = 'read_stream';
 
     /**
      * Get the URL for the user to authenticate the application and authorize
@@ -51,7 +52,7 @@ class Horde_Service_Facebook_Auth extends Horde_Service_Facebook_Base
      *
      * @return string  The URL.
      */
-    public function getOAuthUrl($callback, array $perms = array(), $state = null)
+    public function getOAuthUrl($callback, array $perms = [], $state = null)
     {
         return $this->_facebook->getFacebookUrl()
             . '/dialog/oauth?client_id=' . $this->_facebook->appId
@@ -95,7 +96,9 @@ class Horde_Service_Facebook_Auth extends Horde_Service_Facebook_Base
         if (!empty($code)) {
             try {
                 $result = $this->_http->request(
-                    'GET', $this->getAuthTokenUrl($code, $callback));
+                    'GET',
+                    $this->getAuthTokenUrl($code, $callback)
+                );
             } catch (Horde_Http_Exception $e) {
                 throw new Horde_Service_Facebook_Exception($e);
             }
@@ -133,13 +136,14 @@ class Horde_Service_Facebook_Auth extends Horde_Service_Facebook_Base
         if (!$skey = $this->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'session_key is required',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         return $this->_facebook->callGraphApi(
             'me/permissions',
-            array('permission' => $perm),
-            array('request' => 'DELETE')
+            ['permission' => $perm],
+            ['request' => 'DELETE']
         );
     }
 
@@ -154,7 +158,8 @@ class Horde_Service_Facebook_Auth extends Horde_Service_Facebook_Base
         if (empty($this->_sessionKey)) {
             throw new Horde_Service_Facebook_Exception(
                 'users.getLoggedInUser requires a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         $results = $this->_facebook->callGraphApi('me');

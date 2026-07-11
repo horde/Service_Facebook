@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Open streams API
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -10,7 +11,6 @@
  */
 class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
 {
-
     /**
      * Get a specific post.
      *
@@ -35,7 +35,8 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
         if (empty($uid) && !$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.get requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         if (empty($uid)) {
@@ -57,12 +58,13 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
      *
      * @return object
      */
-    public function getStream($filter = null, array $options = array())
+    public function getStream($filter = null, array $options = [])
     {
         if (!$session_key = $this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.get requires a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
         if (!empty($filter)) {
             $options['filter'] = $filter;
@@ -83,7 +85,8 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
         if (empty($uid) || !$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.getFilters requires a uid and a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         $fql = 'SELECT filter_key, name FROM stream_filter WHERE uid="'
@@ -119,13 +122,14 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
      *
      * @return string  The UID of the new post.
      */
-    public function post($uid, $message, array $options = array())
+    public function post($uid, $message, array $options = [])
     {
         $options['message'] = $message;
         $results = $this->_facebook->callGraphApi(
             $uid . '/feed',
             $options,
-            array('request' => 'POST'));
+            ['request' => 'POST']
+        );
 
         return $results->id;
     }
@@ -142,13 +146,15 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.remove requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $postid,
-            array(),
-            array('request' => 'DELETE'));
+            [],
+            ['request' => 'DELETE']
+        );
     }
 
     /**
@@ -164,13 +170,15 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.addComment requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $postId . '/comments',
-            array('message' => $comment),
-            array('request' => 'POST'));
+            ['message' => $comment],
+            ['request' => 'POST']
+        );
     }
 
     /**
@@ -185,13 +193,15 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.removeComment requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $commentId,
-            array(),
-            array('request' => 'DELETE'));
+            [],
+            ['request' => 'DELETE']
+        );
     }
 
     /**
@@ -206,13 +216,15 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.addLike requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $postId . '/likes',
-            array(),
-            array('request' => 'POST'));
+            [],
+            ['request' => 'POST']
+        );
     }
 
     /**
@@ -227,13 +239,15 @@ class Horde_Service_Facebook_Streams extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'Streams.removeLike requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $postId . '/likes',
-            array(),
-            array('request' => 'DELETE'));
+            [],
+            ['request' => 'DELETE']
+        );
     }
 
 }

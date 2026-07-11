@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Users methods for Horde_Service_Facebook
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -15,14 +16,14 @@ class Horde_Service_Facebook_Users extends Horde_Service_Facebook_Base
      *
      * @var array
      */
-    protected $_permissions = array();
+    protected $_permissions = [];
 
     /**
      * Local cache of requested user information
      *
      * @var array
      */
-    protected $_users = array();
+    protected $_users = [];
 
     /**
      * Return a URL to the facebook page of the requested user.
@@ -59,15 +60,15 @@ class Horde_Service_Facebook_Users extends Horde_Service_Facebook_Base
      *
      * @return object  The user information as a stdClass.
      */
-    public function getInfo($uid = null, array $fields = array())
+    public function getInfo($uid = null, array $fields = [])
     {
         if (empty($uid)) {
             $uid = 'me';
         }
         if (!empty($fields)) {
-            $params = array('fields' => implode(',', $fields));
+            $params = ['fields' => implode(',', $fields)];
         } else {
-            $params = array();
+            $params = [];
         }
         $key = md5($uid . implode(',', $fields));
         if (empty($this->_users[$key])) {
@@ -90,8 +91,10 @@ class Horde_Service_Facebook_Users extends Horde_Service_Facebook_Base
     public function getAppPermissions($uid = null)
     {
         if (empty($uid) && !$this->_facebook->auth->getSessionKey()) {
-            throw new Horde_Service_Facebook_Exception('users.hasAppPermission requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY);
+            throw new Horde_Service_Facebook_Exception(
+                'users.hasAppPermission requires either a uid or a session_key',
+                Horde_Service_Facebook_ErrorCodes::API_EC_PARAM_SESSION_KEY
+            );
         }
 
         if (empty($uid)) {
@@ -101,7 +104,7 @@ class Horde_Service_Facebook_Users extends Horde_Service_Facebook_Base
         if (empty($this->_permissions[$uid])) {
             $results = $this->_facebook->callGraphApi($uid . '/permissions');
             if (!empty($results) && !empty($results->data)) {
-                return $this->_permissions[$uid] = (array)$results->data[0];
+                return $this->_permissions[$uid] = (array) $results->data[0];
             }
         } else {
             return $this->_permissions[$uid];

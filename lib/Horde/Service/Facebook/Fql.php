@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Execute FQL  queries
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -21,7 +22,7 @@ class Horde_Service_Facebook_Fql extends Horde_Service_Facebook_Base
      */
     public function run($query)
     {
-        $params = array('query' => $query);
+        $params = ['query' => $query];
 
         return $this->_facebook->callMethod('facebook.fql.query', $params);
     }

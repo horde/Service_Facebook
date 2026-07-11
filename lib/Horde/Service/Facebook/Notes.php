@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Notes methods.
  *
  * Note that these api calls are marked as BETA in the facebook docs.
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -28,13 +29,15 @@ class Horde_Service_Facebook_Notes extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'session_key is required',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $uid . '/notes',
-            array('message' => $content, 'subject' => $title),
-            array('request' => 'POST'));
+            ['message' => $content, 'subject' => $title],
+            ['request' => 'POST']
+        );
     }
 
     /**
@@ -50,13 +53,15 @@ class Horde_Service_Facebook_Notes extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'session_key is required',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $note_id,
-            array(),
-            array('request' => 'DELETE'));
+            [],
+            ['request' => 'DELETE']
+        );
     }
 
     /**
@@ -77,14 +82,15 @@ class Horde_Service_Facebook_Notes extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'session_key is required',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         if (empty($note_ids)) {
             return $this->_facebook->callGraphApi($uid . '/notes');
         }
 
-        return $this->_facebook->callMethod('', array('ids' => $note_ids));
+        return $this->_facebook->callMethod('', ['ids' => $note_ids]);
     }
 
 }

@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Notifications methods for Horde_Service_Faceboook
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -25,7 +26,8 @@ class Horde_Service_Facebook_Notifications extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'session_key is required',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         return $this->_facebook->callMethod('facebook.notifications.get');
