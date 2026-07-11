@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Horde_Service_Facebook_Request:: encapsulate a request to the Facebook API.
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -44,7 +45,7 @@ abstract class Horde_Service_Facebook_Request_Base
      * @param array                  $params
      *
      */
-    public function __construct($facebook, $method, array $params = array())
+    public function __construct($facebook, $method, array $params = [])
     {
         $this->_facebook = $facebook;
         $this->_http = $facebook->http;
@@ -68,5 +69,5 @@ abstract class Horde_Service_Facebook_Request_Base
      *   - params: (array) Form parameters to pass
      *   - file: (string) Local path to the file
      */
-    abstract public function upload(array $options = array());
+    abstract public function upload(array $options = []);
 }

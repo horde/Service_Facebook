@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Videos methods
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -23,13 +24,14 @@ class Horde_Service_Facebook_Videos extends Horde_Service_Facebook_Base
      *         DEFAULT: None (Will upload on behalf of the current user).
      * @return array  An array of user objects
      */
-    public function upload(array $params = array())
+    public function upload(array $params = [])
     {
         // Requires either a owner_uid or a session_key
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'photos.addTag requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         if (empty($params['file'])) {
@@ -37,14 +39,14 @@ class Horde_Service_Facebook_Videos extends Horde_Service_Facebook_Base
         }
 
         // Build the data to send.
-        $data = array(
-            'message' => empty($params['caption']) ? '' : $params['caption']
-        );
+        $data = [
+            'message' => empty($params['caption']) ? '' : $params['caption'],
+        ];
 
         $uid = empty($params['uid']) ? 'me/videos' : $params['uid'] . '/videos';
         $request = new Horde_Service_Facebook_Request_Graph($this->_facebook, $uid);
 
-        return $request->upload(array('params' => $data, 'file' => $params['file']));
+        return $request->upload(['params' => $data, 'file' => $params['file']]);
     }
 
 }

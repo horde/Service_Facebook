@@ -1,15 +1,16 @@
 <?php
+
 /**
  * Events methods for Horde_Service_Facebook
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
  * @package Service_Facebook
  */
- class Horde_Service_Facebook_Events extends Horde_Service_Facebook_Base
- {
+class Horde_Service_Facebook_Events extends Horde_Service_Facebook_Base
+{
     /**
      * Returns events according to the filters specified.
      *
@@ -23,9 +24,9 @@
      *
      * @return array  The events matching the query.
      */
-    public function get($options = array())
+    public function get($options = [])
     {
-        $defaults = array('uid' => 'me()');
+        $defaults = ['uid' => 'me()'];
         $options = array_merge($defaults, $options);
 
         $fql = 'SELECT eid, name, pic_square, pic_small, '
@@ -56,7 +57,7 @@
 
         // If no requested status, query to get the current statuses.
         if (empty($options['rsvp'])) {
-           $eids = array();
+            $eids = [];
             foreach ($events as $e) {
                 $eids[] = $e['eid'];
             }
@@ -84,13 +85,13 @@
     protected function _fromDriverStatus($driver_status)
     {
         switch ($driver_status) {
-        case 'attending':
-            return 'confirmed';
-        case 'unsure':
-            return 'tentative';
-        case 'declined':
-        case 'not_replied':
-            return 'free';
+            case 'attending':
+                return 'confirmed';
+            case 'unsure':
+                return 'tentative';
+            case 'declined':
+            case 'not_replied':
+                return 'free';
         }
     }
 
@@ -117,14 +118,15 @@
      */
     public function rsvp($eid, $rsvp)
     {
-        if (!in_array($rsvp, array('attending', 'maybe', 'declined'))) {
+        if (!in_array($rsvp, ['attending', 'maybe', 'declined'])) {
             throw InvalidArgumentException();
         }
 
         return $this->_facebook->callGraphApi(
             $eid . '/' . $rsvp,
-            array(),
-            array('request' => 'POST'));
+            [],
+            ['request' => 'POST']
+        );
     }
 
     /**
@@ -138,8 +140,9 @@
     {
         return $this->_facebook->callGraphApi(
             $eid,
-            array(),
-            array('request' => 'DELETE'));
+            [],
+            ['request' => 'DELETE']
+        );
     }
 
     /**
@@ -156,7 +159,8 @@
         return $this->_facebook->callGraphApi(
             $uid . '/events',
             $event_info,
-            array('request' => 'POST'));
+            ['request' => 'POST']
+        );
     }
 
- }
+}

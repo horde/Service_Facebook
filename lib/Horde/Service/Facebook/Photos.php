@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Photos methods for Horde_Service_Facebook
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -27,19 +28,21 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
      *
      * @return boolean
      */
-    public function addTag($pid, array $options = array())
+    public function addTag($pid, array $options = [])
     {
         // Requires either a owner_uid or a session_key
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'photos.addTag requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $pid,
             $options,
-            array('request' => 'POST'));
+            ['request' => 'POST']
+        );
     }
 
     /**
@@ -59,12 +62,14 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'photos.addTag requires either a owner_uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
         return $this->_facebook->callGraphApi(
             $uid . '/albums',
-            array('name' => $name, 'message' => $description),
-            array('request' => 'POST'));
+            ['name' => $name, 'message' => $description],
+            ['request' => 'POST']
+        );
     }
 
     /**
@@ -82,24 +87,25 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
      *
      * @return array  An array of photo objects.
      */
-    public function get(array $filter = array(), array $options = array())
+    public function get(array $filter = [], array $options = [])
     {
         // Requires a session_key
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'photos.addTag requires a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
 
-        $params = array();
+        $params = [];
         if (!empty($filter['tagged'])) {
             $uid = $filter['tagged'] . '/photos';
         } elseif (!empty($filter['album'])) {
             $uid = $filter['album'];
         } elseif (!empty($filter['photos'])) {
             $uid = '';
-            $params = array('ids' => $filter['photos']);
+            $params = ['ids' => $filter['photos']];
         } else {
             $uid = 'me/photos';
         }
@@ -126,13 +132,14 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'photos.addTag requires a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
         if (empty($aids)) {
-            $params = array();
+            $params = [];
             $uid = $uid . '/albums';
         } else {
-            $params = array('ids' => $aids);
+            $params = ['ids' => $aids];
             $uid = '';
         }
 
@@ -154,7 +161,8 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'photos.addTag requires a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         return $this->_facebook->graphApi($pid . '/tags');
@@ -179,30 +187,31 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
      *         DEFAULT: None (Will upload on behalf of the current user).
      * @return array  An array of user objects
      */
-    public function upload(array $params = array())
+    public function upload(array $params = [])
     {
         // Requires either a owner_uid or a session_key
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'photos.addTag requires either a uid or a session_key',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         // Defaults
         $params = array_merge(
-            array(
+            [
                 'caption' => '',
                 'aid' => '',
-                'place' => ''
-            ),
+                'place' => '',
+            ],
             $params
         );
 
         // Build the data to send.
-        $data = array(
+        $data = [
             'message' => $params['caption'],
-            'place' => $params['place']
-        );
+            'place' => $params['place'],
+        ];
 
         // Uploading to the application gallery or other?
         if (!empty($params['aid'])) {
@@ -214,7 +223,7 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
         // Uploading image or providing URL?
         if (!empty($params['file'])) {
             $request = new Horde_Service_Facebook_Request_Graph($this->_facebook, $uid);
-            return $request->upload(array('params' => $data, 'file' => $params['file']));
+            return $request->upload(['params' => $data, 'file' => $params['file']]);
         } elseif (!empty($params['url'])) {
             $data['url'] = $params['url'];
         }
@@ -222,7 +231,7 @@ class Horde_Service_Facebook_Photos extends Horde_Service_Facebook_Base
         return $this->_facebook->callGraphApi(
             $uid,
             $data,
-            array('request' => 'POST')
+            ['request' => 'POST']
         );
     }
 

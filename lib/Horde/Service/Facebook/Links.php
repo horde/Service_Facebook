@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Links methods
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -21,13 +22,14 @@ class Horde_Service_Facebook_Links extends Horde_Service_Facebook_Base
      *
      * @return array  An array of links.
      */
-    public function get($uid = null, array $options = array())
+    public function get($uid = null, array $options = [])
     {
         // Require a session
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'session_key is required',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
 
         if (empty($uid)) {
@@ -37,12 +39,14 @@ class Horde_Service_Facebook_Links extends Horde_Service_Facebook_Base
             $options['ids'] = implode(',', $options['ids']);
             return $this->_facebook->callGraphApi(
                 '',
-                $options);
+                $options
+            );
         }
 
         return $this->_facebook->callGraphApi(
             $uid . '/links',
-            $options);
+            $options
+        );
     }
 
     /**
@@ -60,12 +64,13 @@ class Horde_Service_Facebook_Links extends Horde_Service_Facebook_Base
      *
      * @return boolean
      */
-    public function post($link, $uid = null, array $options = array())
+    public function post($link, $uid = null, array $options = [])
     {
         if (!$this->_facebook->auth->getSessionKey()) {
             throw new Horde_Service_Facebook_Exception(
                 'session_key is required',
-                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED);
+                Horde_Service_Facebook_ErrorCodes::API_EC_SESSION_REQUIRED
+            );
         }
         if (empty($uid)) {
             $uid = 'me';
@@ -75,7 +80,8 @@ class Horde_Service_Facebook_Links extends Horde_Service_Facebook_Base
         return $this->_facebook->callGraphApi(
             $uid . '/links',
             $options,
-            array('request' => 'POST'));
+            ['request' => 'POST']
+        );
     }
 
 }

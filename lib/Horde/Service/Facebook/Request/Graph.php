@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Horde_Service_Facebook_Request_Graph:: encapsulate a request to the
  * Graph API.
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -43,8 +44,11 @@ class Horde_Service_Facebook_Request_Graph extends Horde_Service_Facebook_Reques
      *            DEFAULT: GET
      */
     public function __construct(
-        $facebook, $method = '', array $params = array(), array $options = array())
-    {
+        $facebook,
+        $method = '',
+        array $params = [],
+        array $options = []
+    ) {
         parent::__construct($facebook, $method, $params);
 
         $this->_endpoint = new Horde_Url($facebook->getFacebookUrl('graph') . '/' . $this->_method);
@@ -61,20 +65,20 @@ class Horde_Service_Facebook_Request_Graph extends Horde_Service_Facebook_Reques
      *   - params: (array) Form parameters to pass
      *   - file: (string) Local path to the file
      */
-    public function upload(array $options = array())
+    public function upload(array $options = [])
     {
         // the format of this message is specified in RFC1867/RFC1341.
         // we add twenty pseudo-random digits to the end of the boundary string.
-        $boundary = '--------------------------FbMuLtIpArT' .
-                    sprintf("%010d", mt_rand()) .
-                    sprintf("%010d", mt_rand());
+        $boundary = '--------------------------FbMuLtIpArT'
+                    . sprintf("%010d", mt_rand())
+                    . sprintf("%010d", mt_rand());
         $content_type = 'multipart/form-data; boundary=' . $boundary;
 
         // within the message, we prepend two extra hyphens.
         $delimiter = '--' . $boundary;
         $close_delimiter = $delimiter . '--';
 
-        $content_lines = array();
+        $content_lines = [];
         $params = array_merge($options['params'], $this->_params);
         foreach ($params as $key => $val) {
             $content_lines[] = $delimiter;
@@ -94,13 +98,14 @@ class Horde_Service_Facebook_Request_Graph extends Horde_Service_Facebook_Reques
         $content = implode("\r\n", $content_lines);
 
         try {
-            $result = $this->_http->request('POST',
+            $result = $this->_http->request(
+                'POST',
                 $this->_endpoint->toString(true),
                 $content,
-                array(
-                    'Content-Type' => $content_type ,
-                    'Content-Length' => strlen($content)
-                )
+                [
+                    'Content-Type' => $content_type,
+                    'Content-Length' => strlen($content),
+                ]
             );
         } catch (Horde_Http_Exception $e) {
             throw new Horde_Service_Facebook_Exception(sprintf(Horde_Service_Facebook_Translation::t("Upload failed: %s"), $e->getMessage()));
@@ -123,7 +128,7 @@ class Horde_Service_Facebook_Request_Graph extends Horde_Service_Facebook_Reques
     {
         if ($this->_request != 'POST') {
             $this->_endpoint->add($this->_params);
-            $params = array();
+            $params = [];
         } else {
             $params = $this->_params;
         }
@@ -137,8 +142,8 @@ class Horde_Service_Facebook_Request_Graph extends Horde_Service_Facebook_Reques
 
         if ($result->code != '200') {
             $body = $result->getBody();
-            if (($error = json_decode($body, true)) &&
-                isset($error['error']['message'])) {
+            if (($error = json_decode($body, true))
+                && isset($error['error']['message'])) {
                 throw new Horde_Service_Facebook_Exception($error['error']['message']);
             }
             throw new Horde_Service_Facebook_Exception($body);

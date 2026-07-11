@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Horde_Service_Facebook_Request:: encapsulate a request to the Facebook API.
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author Michael J. Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -45,7 +46,7 @@ class Horde_Service_Facebook_Request_Rest extends Horde_Service_Facebook_Request
      *   - params: (array) Form parameters to pass
      *   - file: (string) Local path to the file
      */
-    public function upload(array $options = array())
+    public function upload(array $options = [])
     {
         throw new Horde_Service_Facebook_Exception('Deprecated');
     }
@@ -140,9 +141,9 @@ class Horde_Service_Facebook_Request_Rest extends Horde_Service_Facebook_Request
      */
     protected function _createPostString($params)
     {
-        $post_params = array();
+        $post_params = [];
         foreach ($params as $key => &$val) {
-            $post_params[] = $key.'='.urlencode($val);
+            $post_params[] = $key . '=' . urlencode($val);
         }
 
         return implode('&', $post_params);
